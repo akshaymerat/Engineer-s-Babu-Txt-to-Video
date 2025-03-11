@@ -123,35 +123,35 @@ async def start(client: Client, msg: Message):
     await start_message.edit_text(
         Data.START.format(msg.from_user.mention) +
         "Initializing Uploader bot... 🤖\n\n"
-        "Progress: [⬜⬜⬜⬜⬜⬜⬜⬜⬜] 0%\n\n"
+        "Progress: [⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜] 0%\n\n"
     )
 
     await asyncio.sleep(1)
     await start_message.edit_text(
         Data.START.format(msg.from_user.mention) +
         "Loading features... ⏳\n\n"
-        "Progress: [🟥🟥🟥⬜⬜⬜⬜⬜⬜] 25%\n\n"
+        "Progress: [🟥🟥🟥⬜⬜⬜⬜⬜⬜⬜] 25%\n\n"
     )
     
     await asyncio.sleep(1)
     await start_message.edit_text(
         Data.START.format(msg.from_user.mention) +
         "This may take a moment, sit back and relax! 😊\n\n"
-        "Progress: [🟧🟧🟧🟧🟧⬜⬜⬜⬜] 50%\n\n"
+        "Progress: [🟧🟧🟧🟧🟧⬜⬜⬜⬜⬜] 50%\n\n"
     )
 
     await asyncio.sleep(1)
     await start_message.edit_text(
         Data.START.format(msg.from_user.mention) +
         "Checking Bot Status... 🔍\n\n"
-        "Progress: [🟨🟨🟨🟨🟨🟨🟨⬜⬜] 75%\n\n"
+        "Progress: [🟨🟨🟨🟨🟨🟨🟨⬜⬜⬜] 75%\n\n"
     )
 
     await asyncio.sleep(1)
     await start_message.edit_text(
         Data.START.format(msg.from_user.mention) +
         "Checking status Ok... \n\n I Am A Bot For Download Files From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task\n\n"
-        "Progress:[🟩🟩🟩🟩🟩🟩🟩🟩🟩] 100%\n\n"
+        "Progress:[🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩] 100%\n\n"
     )
 
 @bot.on_message(filters.command(["stop"]) )
