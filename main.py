@@ -705,7 +705,7 @@ async def txt_handler(bot: Client, m: Message):
     await m.reply_text("🔰Done🔰")
 
 # Ankitshakya
-
+'''
 @bot.on_message(filters.command(["rajesh"]))
 async def txt_handler(bot: Client, m: Message):
     editable = await m.reply_text(f"**🔹Send me the TXT file and wait.**")
@@ -950,7 +950,7 @@ async def txt_handler(bot: Client, m: Message):
         await m.reply_text(e)
     await m.reply_text("🔰Done🔰")
     await m.reply_text("✨Thankyou For Choosing")
-
+'''
 # m3u8
 
 @bot.on_message(filters.command(["txt"]))
