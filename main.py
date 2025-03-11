@@ -150,7 +150,7 @@ async def start(client: Client, msg: Message):
     await asyncio.sleep(1)
     await start_message.edit_text(
         Data.START.format(msg.from_user.mention) +
-        "Checking status Ok... \n\n I Am A Bot For Download Files From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me /upload Command And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task\n\n"
+        "Checking status Ok... \n\n I Am A Bot For Download Files From Your **.TXT** File And Then Upload That File On Telegram So Basically If You Want To Use Me First Send Me \n/rajesh\n/mahar\n/upload\n/txt\n/txt1\nCommand And Then Follow Few Steps..\n\nUse /stop to stop any ongoing task\n\n"
         "Progress:[🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩] 100%\n\n"
     )
 
@@ -160,7 +160,7 @@ async def restart_handler(_, m):
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on_message(filters.command(["upload"]) )
+@bot.on_message(filters.command(["rajesh","upload"]) )
 async def txt_handler(bot: Client, m: Message):
     editable = await m.reply_text(f"**Send me the TXT file and wait.**")
     input: Message = await bot.listen(editable.chat.id)
