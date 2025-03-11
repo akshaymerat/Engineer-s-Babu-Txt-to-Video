@@ -369,10 +369,19 @@ async def txt_handler(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
-            try:  
+            try:
                 
-                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}\n\n📝 Title: {name1}.mkv**\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>\n\n**📥 Extracted By** : **{CR}**'
-                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}\n\n📝 Title: {name1}.pdf**\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>\n\n**📥 Extracted By** : **{CR}**'
+                # Generate the final message dynamically based on the presence of batch name and extracted by values
+                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}.\n\n Title: {name1}.mkv**'
+                if b_name != file_name:
+                    cc += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc += f'\n\n**📥 Extracted By** : **{CR}**'
+                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}.\n\n Title: {name1}.pdf**'
+                if b_name != file_name:
+                    cc1 += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc1 += f'\n\n**📥 Extracted By** : **{CR}**'
                     
                 
                 if "drive" in url:
@@ -610,10 +619,19 @@ async def txt_handler(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
-            try:  
+            try:
                 
-                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}.\n\nTitle: {name1}.mkv**\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>\n\n**📥 Extracted By** : **{CR}**'
-                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}.\n\nTitle: {name1}.pdf**\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>\n\n**📥 Extracted By** : **{CR}**'
+                # Generate the final message dynamically based on the presence of batch name and extracted by values
+                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}.\n\n Title: {name1}.mkv**'
+                if b_name != file_name:
+                    cc += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc += f'\n\n**📥 Extracted By** : **{CR}**'
+                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}.\n\n Title: {name1}.pdf**'
+                if b_name != file_name:
+                    cc1 += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc1 += f'\n\n**📥 Extracted By** : **{CR}**'
                     
                 
                 if "drive" in url:
@@ -846,11 +864,20 @@ async def txt_handler(bot: Client, m: Message):
 
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
-
-            try:  
+            
+            try:
                 
-                cc = f'**<pre><code>🎞️ 𝐕𝐈𝐃_𝐈𝐃: {str(count).zfill(3)}</code></pre>\n\n<pre><code>📝 𝐓𝐈𝐓𝐋𝐄:👇🏻</code></pre>\n<pre><code>{name1} {res} .mkv</code></pre>\n\n<pre><code>📚 𝐁𝐀𝐓𝐂𝐇 𝐍𝐀𝐌𝐄:👇🏻</code>\n</pre><pre><code>{b_name}</code></pre>\n\n<pre><code>✨𝐄𝐗𝐓𝐑𝐀𝐂𝐓𝐄𝐃 𝐁𝐘 : {CR}</code></pre>**\n\n<pre><code>━━━━━✦Rajesh Mahar 🕊️🕊️✦━━━━━</code></pre>'
-                cc1 = f'**<pre><code>📁 𝐏𝐃𝐅_𝐈𝐃: {str(count).zfill(3)}</code></pre>\n\n<pre><code>📝 𝐓𝐈𝐓𝐋𝐄:👇🏻</code></pre>\n<pre><code>{name1} .pdf</code></pre>\n\n<pre><code>📚 𝐁𝐀𝐓𝐂𝐇 𝐍𝐀𝐌𝐄:👇🏻</code>\n</pre><pre><code>{b_name}</code></pre>\n\n<pre><code>✨𝐄𝐗𝐓𝐑𝐀𝐂𝐓𝐄𝐃 𝐁𝐘 : {CR}</code></pre>**\n\n<pre><code>━━━━━✦Rajesh Mahar 🕊️🕊️✦━━━━━</code></pre>'
+                # Generate the final message dynamically based on the presence of batch name and extracted by values
+                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}.\n\n Title: {name1}.mkv**'
+                if b_name != file_name:
+                    cc += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc += f'\n\n**📥 Extracted By** : **{CR}**'
+                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}.\n\n Title: {name1}.pdf**'
+                if b_name != file_name:
+                    cc1 += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc1 += f'\n\n**📥 Extracted By** : **{CR}**'
                     
                 
                 if "drive" in url:
@@ -1104,10 +1131,19 @@ async def txt_handler(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
-            try:  
+            try:
                 
-                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}.\n\n Title: {name1}.mkv**\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>\n\n**📥 Extracted By** : **{CR}**'
-                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}.\n\n Title: {name1}.pdf**\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>\n\n**📥 Extracted By** : **{CR}**'
+                # Generate the final message dynamically based on the presence of batch name and extracted by values
+                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}.\n\n Title: {name1}.mkv**'
+                if b_name != file_name:
+                    cc += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc += f'\n\n**📥 Extracted By** : **{CR}**'
+                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}.\n\n Title: {name1}.pdf**'
+                if b_name != file_name:
+                    cc1 += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc1 += f'\n\n**📥 Extracted By** : **{CR}**'
                     
                 
                 if "drive" in url:
@@ -1339,10 +1375,19 @@ async def txt_handler(bot: Client, m: Message):
             else:
                 cmd = f'yt-dlp -f "{ytf}" "{url}" -o "{name}.mp4"'
 
-            try:  
+            try:
                 
-                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}.\n\n📝 Title: {name1}.mkv\n\n<pre><code>📚 Batch Name: {b_name}</code></pre>\n\n📥 Extracted By : {CR}'
-                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}.\n\n📝 Title: {name1}.pdf\n\n<pre><code>📚 Batch Name: {b_name}</code></pre>\n\n📥 Extracted By : {CR}'
+                # Generate the final message dynamically based on the presence of batch name and extracted by values
+                cc = f'**🎞️ VID_ID: {str(count).zfill(3)}.\n\n Title: {name1}.mkv**'
+                if b_name != file_name:
+                    cc += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc += f'\n\n**📥 Extracted By** : **{CR}**'
+                cc1 = f'**📁 PDF_ID: {str(count).zfill(3)}.\n\n Title: {name1}.pdf**'
+                if b_name != file_name:
+                    cc1 += f'\n\n<pre><code>🔖 Batch Name: {b_name}</code></pre>'
+                if CR != credit:
+                    cc1 += f'\n\n**📥 Extracted By** : **{CR}**'
                     
                 
                 if "drive" in url:
