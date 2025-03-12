@@ -6,6 +6,7 @@ import time
 import asyncio
 import requests
 import subprocess
+import logging
 import urllib.parse
 import yt_dlp
 import cloudscraper
@@ -25,6 +26,10 @@ from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+# Initialize logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 # Initialize the bot
 bot = Client(
@@ -54,10 +59,11 @@ async def web_server():
 
 async def start_bot():
     await bot.start()
-    print("Bot is up and running")
+    logger.info("Bot is up and running")
 
 async def stop_bot():
     await bot.stop()
+    logger.info("Bot has stopped")
 
 async def main():
     if WEBHOOK:
@@ -66,8 +72,8 @@ async def main():
         await app_runner.setup()
         site = web.TCPSite(app_runner, "0.0.0.0", PORT)
         await site.start()
-        print(f"Web server started on port {PORT}")
-
+        logger.info(f"Web server started on port {PORT}")
+        
     # Start the bot
     await start_bot()
 
@@ -77,8 +83,17 @@ async def main():
             await bot.polling()  # Run forever, or until interrupted
     except (KeyboardInterrupt, SystemExit):
         await stop_bot()
-    
 
+@bot.on_message(filters.command("log"))
+async def log_handler(_, m):
+    log_file = "bot.log"
+    if os.path.exists(log_file):
+        with open(log_file, 'r') as f:
+            log_content = f.read()
+        await m.reply_text(f"**Log File Content:**\n\n```\n{log_content}\n```", parse_mode="markdown")
+    else:
+        await m.reply_text("Log file not found.")
+    
 async def start_bot():
     await bot.start()
     print("Bot is up and running")
@@ -159,7 +174,13 @@ async def restart_handler(_, m):
     await m.reply_text("**STOPPED**🛑", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
 
-
+# Add reboot command
+@bot.on_message(filters.command("reboot"))
+async def reboot_handler(_, m):
+    await m.reply_text("**Rebooting...**🔄", True)
+    logger.info("Bot is rebooting")
+    os.execl(sys.executable, sys.executable, *sys.argv)
+    
 @bot.on_message(filters.command(["rajesh","upload"]) )
 async def txt_handler(bot: Client, m: Message):
     editable = await m.reply_text(f"**Send me the TXT file and wait.**")
