@@ -7,6 +7,7 @@ import asyncio
 import requests
 import subprocess
 import logging
+from logging.handlers import RotatingFileHandler
 import urllib.parse
 import yt_dlp
 import cloudscraper
@@ -27,9 +28,17 @@ from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-# Initialize logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+logging.basicConfig(
+    level=logging.ERROR,
+    format="%(asctime)s - %(levelname)s - %(message)s [%(filename)s:%(lineno)d]",
+    datefmt="%d-%b-%y %H:%M:%S",
+    handlers=[
+        RotatingFileHandler("logs.txt", maxBytes=50000000, backupCount=10),
+        logging.StreamHandler(),
+    ],
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+logger = logging.getLogger()
 
 # Initialize the bot
 bot = Client(
@@ -40,9 +49,7 @@ bot = Client(
 )
 
 my_name = ""
-
 centered_text = "".center(40)
-
 cookies_file_path = os.getenv("COOKIES_FILE_PATH", "youtube_cookies.txt")
 
 # Define aiohttp routes
@@ -86,11 +93,9 @@ async def main():
 
 @bot.on_message(filters.command("log"))
 async def log_handler(_, m):
-    log_file = "bot.log"
+    log_file = "logs.txt"
     if os.path.exists(log_file):
-        with open(log_file, 'r') as f:
-            log_content = f.read()
-        await m.reply_text(f"**Log File Content:**\n\n```\n{log_content}\n```", parse_mode="markdown")
+        await m.reply_document(log_file)
     else:
         await m.reply_text("Log file not found.")
     
