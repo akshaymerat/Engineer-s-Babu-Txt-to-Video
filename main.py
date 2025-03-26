@@ -304,6 +304,14 @@ async def txt_handler(bot: Client, m: Message):
              url = requests.get(f'https://api.classplusapp.com/cams/uploader/video/jw-signed-url?url={url}', headers={'x-access-token': 'eyJjb3Vyc2VJZCI6IjQ1NjY4NyIsInR1dG9ySWQiOm51bGwsIm9yZ0lkIjo0ODA2MTksImNhdGVnb3J5SWQiOm51bGx9r'}).json()['url']
 
             elif "apps-s3-jw-prod.utkarshapp.com" in url:
+             if 'testbook' in url:
+                id =  url.split("/")[-2]
+                url =  "https://extractapi.vercel.app/classplus?link=https://cpvod.testbook.com/" + id + "/playlist.m3u8"
+
+            elif 'cpvod.testbook' in url:
+                id =  url.split("/")[-2]
+                url =  "https://extractapi.vercel.app/classplus?link=https://cpvod.testbook.com/" + id + "/playlist.m3u8"
+
                 if 'enc_plain_mp4' in url:
                     url = url.replace(url.split("/")[-1], res+'.mp4')
                     
