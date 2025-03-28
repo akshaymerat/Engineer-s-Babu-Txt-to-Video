@@ -308,9 +308,9 @@ async def txt_handler(bot: Client, m: Message):
                 id =  url.split("/")[-2]
                 url =  "https://extractapi.vercel.app/classplus?link=https://cpvod.testbook.com/" + id + "/playlist.m3u8"
         
-             if "classplusapp.com/drm/" in url:
-                   url = "https://dragoapi.vercel.app/classplus?link=" + url
-                    print(url)
+           #  if "classplusapp.com/drm/" in url:
+           #        url = "https://dragoapi.vercel.app/classplus?link=" + url
+              #      print(url)
 
             elif 'cpvod.testbook' in url:
                 id =  url.split("/")[-2]
